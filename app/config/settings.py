@@ -22,7 +22,7 @@ class Settings(BaseSettings):
     name: str = Field(default="FastAPI Clean Starter")
     version: str = Field(default="0.1.0")
     env: AppEnv = Field(default=AppEnv.local)
-    debug: bool = Field(default=True)
+    debug: bool = Field(default=False)
     log_level: Literal["CRITICAL", "ERROR", "WARNING", "INFO", "DEBUG"] = Field(default="INFO")
 
     # External APIs

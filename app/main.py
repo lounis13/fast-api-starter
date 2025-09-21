@@ -15,9 +15,9 @@ from app.infrastructure.logging.config import configure_logging
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     # Startup
-    settings: Settings = get_settings()
-    configure_logging(settings)
-    logging.getLogger(__name__).info("Application starting", extra={"env": settings.env})
+    app_settings: Settings = get_settings()
+    configure_logging(app_settings)
+    logging.getLogger(__name__).info("Application starting", extra={"env": app_settings.env})
     yield
     # Shutdown
     logging.getLogger(__name__).info("Application shutdown")
@@ -48,6 +48,7 @@ def create_app() -> FastAPI:
 
 
 app = create_app()
+
 
 if __name__ == "__main__":
     import uvicorn
